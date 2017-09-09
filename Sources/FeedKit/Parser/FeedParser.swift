@@ -60,25 +60,21 @@ public class FeedParser {
         return self.parser.parse()
     }
     
-    /// Starts parsing the feed asynchronously. Parsing runs by default on the
-    /// global queue. You are responsible to manually bring the result closure
-    /// to whichever queue is apropriate, if any.
-    ///
-    /// Usually to the Main queue if UI Updates are needed.
-    ///
-    ///     DispatchQueue.main.async {
-    ///         // UI Updates
-    ///     }
-    ///
-    /// - Parameters:
-    ///   - queue: The queue on which the completion handler is dispatched.
-    ///   - result: The parsed `Result`.
+    /// Starts parsing the feed asynchronously. Parsing runs by default on the 
+    /// global queue. So it is safe to run any UI code on the result closure.
+	///
+	/// - Parameters:
+	///   - queue: The queue on which the completion handler is dispatched.
+	///   - result: Tjhe parsed `Result`.
     public func parseAsync(
         queue: DispatchQueue = DispatchQueue.global(),
         result: @escaping (Result) -> Void)
     {
         queue.async {
-            result(self.parse())
+            let parsedResult = self.parse()
+            DispatchQueue.main.async {
+                result(parsedResult)
+            }
         }
     }
     

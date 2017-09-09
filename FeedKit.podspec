@@ -3,9 +3,9 @@ Pod::Spec.new do |s|
   s.version = '6.1.3'
   s.license = 'MIT'
   s.summary = 'An RSS, Atom and JSON Feed parser written in Swift'
-  s.homepage = 'https://github.com/nmdias/FeedKit'
+  s.homepage = 'https://github.com/nguyenvandungb/FeedKit'
   s.authors = { 'Nuno Manuel Dias' => 'nmdias.pt@gmail.com' }
-  s.source = { :git => 'https://github.com/nmdias/FeedKit.git', :tag => s.version }
+  s.source = { :git => 'https://github.com/nguyenvandungb/FeedKit.git', :tag => s.version }
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
   s.tvos.deployment_target = '9.0'
